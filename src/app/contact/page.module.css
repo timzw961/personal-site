@@ -23,12 +23,30 @@
   border-top: 1px solid var(--border);
 }
 
+.row a {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .row:first-child {
   border-top: none;
   padding-top: 0;
 }
 
 .label {
+  flex: 0 0 90px;
   min-width: 90px;
   color: var(--muted);
+}
+
+@media (max-width: 520px) {
+  .row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .label {
+    flex-basis: auto;
+    min-width: 0;
+  }
 }

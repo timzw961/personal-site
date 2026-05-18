@@ -6,9 +6,7 @@ export function Footer() {
     <footer className={styles.footer}>
       <Container>
         <div className={styles.inner}>
-          <p className={styles.text}>
-            © {new Date().getFullYear()} Timothy Wang
-          </p>
+          <p className={styles.text}>Copyright 2026 Timothy Wang</p>
 
           <div className={styles.links}>
             <a

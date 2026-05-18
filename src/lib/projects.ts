@@ -31,7 +31,7 @@ export const projects: Project[] = [
       {
         title: "Impact",
         bullets: [
-          "Reduced CI execution time significantly (replace with your %).",
+          "Reduced CI execution time and improved feedback loops for engineers.",
           "Improved confidence in critical booking flows.",
           "Reduced flakiness and sped up developer iteration.",
         ],
