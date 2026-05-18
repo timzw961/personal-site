@@ -1,9 +1,12 @@
 .header {
-  border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
-  background: rgba(11, 12, 16, 0.8);
-  backdrop-filter: blur(10px);
+  z-index: 10;
+  background:
+    linear-gradient(90deg, rgba(89, 126, 167, 0.22), transparent 38%),
+    linear-gradient(90deg, #f7f4ec 0%, #e7eeec 50%, #d3dddb 100%);
+  color: #070808;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
 }
 
 .inner {
@@ -11,23 +14,69 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  min-height: 84px;
 }
 
 .brand {
+  color: #070808;
+  font-size: 24px;
   font-weight: 700;
-  letter-spacing: 0.2px;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.brand:hover {
+  text-decoration: none;
 }
 
 .nav {
   display: flex;
-  gap: 14px;
+  align-items: center;
+  gap: 20px;
 }
 
-.nav a {
-  color: var(--muted);
-}
-
-.nav a:hover {
-  color: var(--fg);
+.iconLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 4px;
+  background: #070808;
+  color: #f7f4ec;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1;
   text-decoration: none;
+  text-transform: lowercase;
+}
+
+.iconLink:hover {
+  background: #f53b35;
+  color: #070808;
+  text-decoration: none;
+}
+
+.iconLink:first-child:hover {
+  background: #597ea7;
+}
+
+@media (max-width: 640px) {
+  .inner {
+    min-height: 68px;
+  }
+
+  .brand {
+    font-size: 20px;
+  }
+
+  .nav {
+    gap: 10px;
+  }
+
+  .iconLink {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
 }
