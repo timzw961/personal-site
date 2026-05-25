@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 
 type Star = {
   size: number;
@@ -31,7 +31,11 @@ export function HeroStars({
   className?: string;
   starClassName?: string;
 }) {
-  const stars = useMemo(() => buildStars(count), [count]);
+  const [stars, setStars] = useState<Star[]>([]);
+
+  useEffect(() => {
+    setStars(buildStars(count));
+  }, [count]);
 
   return (
     <div className={className} aria-hidden="true">
