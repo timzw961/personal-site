@@ -1,31 +1,42 @@
+.label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(100, 180, 255, 0.65);
+  margin: 36px 0 14px;
+}
+
 .h1 {
-  margin: 28px 0 10px;
-  font-size: 28px;
+  margin: 0 0 14px;
+  font-family: var(--sans);
+  font-size: clamp(28px, 4vw, 40px);
+  color: var(--fg-strong);
 }
 
 .p {
-  margin: 0 0 16px;
+  margin: 0 0 24px;
   max-width: 740px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
 }
 
 .card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 14px;
   max-width: 720px;
+  padding: 22px 24px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-elev);
 }
 
 .row {
   display: flex;
-  gap: 12px;
-  padding: 10px 0;
+  align-items: baseline;
+  gap: 14px;
+  padding: 12px 0;
   border-top: 1px solid var(--border);
-}
-
-.row a {
-  min-width: 0;
-  overflow-wrap: anywhere;
 }
 
 .row:first-child {
@@ -33,10 +44,25 @@
   padding-top: 0;
 }
 
-.label {
+.row a {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent-orange);
+  overflow-wrap: anywhere;
+}
+
+.row a:hover {
+  color: var(--accent-blue);
+}
+
+.labelInline {
   flex: 0 0 90px;
   min-width: 90px;
-  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted-soft);
 }
 
 @media (max-width: 520px) {
@@ -45,7 +71,7 @@
     gap: 4px;
   }
 
-  .label {
+  .labelInline {
     flex-basis: auto;
     min-width: 0;
   }

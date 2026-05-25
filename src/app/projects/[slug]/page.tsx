@@ -47,6 +47,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         ← Back to projects
       </Link>
 
+      <div className={styles.label}>{"// Case study"}</div>
       <h1 className={styles.h1}>{project.title}</h1>
       <p className={styles.p}>{project.summary}</p>
 

@@ -2,11 +2,10 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background:
-    linear-gradient(90deg, rgba(89, 126, 167, 0.22), transparent 38%),
-    linear-gradient(90deg, #f7f4ec 0%, #e7eeec 50%, #d3dddb 100%);
-  color: #070808;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 30, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
 }
 
 .inner {
@@ -14,69 +13,68 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  min-height: 84px;
+  min-height: 58px;
 }
 
 .brand {
-  color: #070808;
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-orange);
   text-decoration: none;
 }
 
 .brand:hover {
+  color: var(--accent-orange);
   text-decoration: none;
+}
+
+.brandMark {
+  font-size: 14px;
+  color: rgba(255, 200, 100, 0.8);
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
 
-.iconLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 4px;
-  background: #070808;
-  color: #f7f4ec;
-  font-size: 21px;
-  font-weight: 800;
-  line-height: 1;
+.navLink {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted-soft);
   text-decoration: none;
-  text-transform: lowercase;
+  transition: color 0.2s;
 }
 
-.iconLink:hover {
-  background: #f53b35;
-  color: #070808;
+.navLink:hover {
+  color: var(--fg-strong);
   text-decoration: none;
-}
-
-.iconLink:first-child:hover {
-  background: #597ea7;
 }
 
 @media (max-width: 640px) {
   .inner {
-    min-height: 68px;
+    min-height: 52px;
   }
 
   .brand {
-    font-size: 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
   }
 
   .nav {
-    gap: 10px;
+    gap: 14px;
   }
 
-  .iconLink {
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
+  .navLink {
+    font-size: 10px;
+    letter-spacing: 1.5px;
   }
 }

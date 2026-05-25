@@ -10,10 +10,10 @@ export const metadata = {
 export default function ProjectsPage() {
   return (
     <Container>
+      <div className={styles.label}>{"// Sector 02 — Projects"}</div>
       <h1 className={styles.h1}>Projects</h1>
       <p className={styles.p}>
-        A few case studies. I keep these short and focused on decisions +
-        impact.
+        A few case studies. Short and focused on decisions + impact.
       </p>
 
       <div className={styles.list}>

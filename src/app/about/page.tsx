@@ -8,15 +8,17 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <Container>
+      <div className={styles.label}>{"// Sector 01 — About"}</div>
       <h1 className={styles.h1}>About</h1>
       <p className={styles.p}>
-        I’m a frontend engineer based in Sydney. I enjoy building products that
-        are simple on the surface but handle real-world complexity underneath.
+        I&rsquo;m a frontend engineer based in Sydney. I enjoy building products
+        that are simple on the surface but handle real-world complexity
+        underneath.
       </p>
 
       <div className={styles.grid}>
         <div className={styles.card}>
-          <h2 className={styles.h2}>What I’m good at</h2>
+          <h2 className={styles.h2}>What I&rsquo;m good at</h2>
           <ul className={styles.list}>
             <li>Designing maintainable frontend architecture</li>
             <li>Accessibility-first UI engineering</li>

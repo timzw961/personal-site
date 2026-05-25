@@ -1,38 +1,70 @@
 .back {
   display: inline-block;
-  margin-top: 22px;
-  color: var(--muted);
+  margin-top: 28px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted-soft);
+}
+
+.back:hover {
+  color: var(--accent-orange);
+}
+
+.label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(100, 180, 255, 0.65);
+  margin: 18px 0 12px;
 }
 
 .h1 {
-  margin: 10px 0 8px;
-  font-size: 28px;
+  margin: 0 0 12px;
+  font-family: var(--sans);
+  font-size: clamp(28px, 4vw, 40px);
+  color: var(--fg-strong);
 }
 
 .p {
   margin: 0;
   max-width: 780px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
 }
 
 .section {
-  margin-top: 18px;
-  padding-top: 18px;
+  margin-top: 28px;
+  padding-top: 22px;
   border-top: 1px solid var(--border);
 }
 
 .h2 {
-  margin: 0 0 10px;
-  font-size: 16px;
+  margin: 0 0 12px;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--fg-strong);
 }
 
 .list {
   margin: 0;
   padding-left: 18px;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.7;
   color: var(--muted);
 }
 
 .note {
-  margin-top: 10px;
-  font-size: 13px;
-  color: var(--muted);
+  margin-top: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted-soft);
+  font-style: italic;
 }

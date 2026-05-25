@@ -6,7 +6,9 @@ export function Footer() {
     <footer className={styles.footer}>
       <Container>
         <div className={styles.inner}>
-          <p className={styles.text}>Copyright 2026 Timothy Wang</p>
+          <p className={styles.coords}>
+            Coordinates: 33.8688° S · 151.2093° E · Milky Way
+          </p>
 
           <div className={styles.links}>
             <a
@@ -14,17 +16,18 @@ export function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              LinkedIn
+              LinkedIn ↗
             </a>
             <a
               href="https://github.com/timzw961"
               target="_blank"
               rel="noreferrer"
             >
-              GitHub
+              GitHub ↗
             </a>
           </div>
         </div>
+        <p className={styles.copy}>Copyright 2026 Timothy Wang</p>
       </Container>
     </footer>
   );
