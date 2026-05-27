@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import styles from "./BlackHoleLoader.module.css";
 
 const SESSION_KEY = "blackhole-loader-played";
-const TOTAL_DURATION_MS = 3200;
+const TOTAL_DURATION_MS = 4500;
 
 type Star = {
   size: number;
@@ -95,11 +95,97 @@ export function BlackHoleLoader() {
       </div>
 
       <div className={styles.wrapper}>
-        <div className={`${styles.disk} ${styles.disk3}`} />
-        <div className={`${styles.disk} ${styles.disk1}`} />
-        <div className={`${styles.disk} ${styles.disk2}`} />
-        <div className={styles.photonRing} />
-        <div className={styles.core} />
+        <svg
+          className={styles.svgScene}
+          viewBox="0 0 240 240"
+          aria-hidden="true"
+        >
+          <defs>
+            <radialGradient id="bh-starGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#fff7c2" />
+              <stop offset="35%" stopColor="#ffe680" />
+              <stop offset="70%" stopColor="#ff9420" />
+              <stop offset="100%" stopColor="rgba(255, 80, 10, 0)" />
+            </radialGradient>
+            <linearGradient
+              id="bh-streamGrad"
+              x1="190"
+              y1="120"
+              x2="120"
+              y2="120"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset="0%" stopColor="rgba(255, 210, 110, 0.95)" />
+              <stop offset="50%" stopColor="rgba(255, 100, 30, 0.95)" />
+              <stop offset="100%" stopColor="rgba(160, 50, 20, 0.45)" />
+            </linearGradient>
+            <radialGradient id="bh-haloGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="rgba(255, 150, 60, 0.55)" />
+              <stop offset="55%" stopColor="rgba(255, 110, 40, 0.18)" />
+              <stop offset="100%" stopColor="rgba(140, 60, 20, 0)" />
+            </radialGradient>
+          </defs>
+
+          {/* Soft halo behind the BH that intensifies as material accumulates,
+              bridging the stream and disk visually. */}
+          <ellipse
+            className={styles.bhHalo}
+            cx="120"
+            cy="120"
+            rx="86"
+            ry="40"
+          />
+
+          {/* Phase A → B — star travels along the stream path via motion-path,
+              shrinking and trailing fire as it goes. Same d= as the stream. */}
+          <path
+            className={styles.tail}
+            d="M188 120 Q165 121 145 122"
+          />
+
+          {/* Phase B — spaghettified stream (drawn via stroke-dashoffset). */}
+          <path
+            className={styles.stream}
+            d="M188 120 Q160 124 138 138 Q112 154 100 130 Q90 102 122 90 Q150 86 162 108"
+            stroke="url(#bh-streamGrad)"
+            fill="none"
+          />
+
+          {/* Phase C — accretion disk fades in early so it overlaps with the
+              stream, then settles into a continuous gentle pulse. */}
+          <g className={styles.diskGroup}>
+            <ellipse
+              className={styles.diskOuter}
+              cx="120"
+              cy="120"
+              rx="72"
+              ry="17"
+            />
+            <ellipse
+              className={styles.diskInner}
+              cx="120"
+              cy="120"
+              rx="46"
+              ry="9"
+            />
+          </g>
+
+          {/* Always-on BH */}
+          <circle
+            className={styles.svgPhotonRing}
+            cx="120"
+            cy="120"
+            r="23"
+          />
+          <circle className={styles.svgCore} cx="120" cy="120" r="20" />
+
+          {/* Star body — rendered last so it sits on top of everything as it
+              travels the path; matches stream d= exactly via offset-path.
+              Wrapped in <g> for broader browser support of offset-path on SVG. */}
+          <g className={styles.starBody}>
+            <circle cx="0" cy="0" r="14" fill="url(#bh-starGrad)" />
+          </g>
+        </svg>
       </div>
 
       <div className={styles.barWrap}>

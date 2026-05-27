@@ -1,17 +1,23 @@
 :root {
   --bg: #02020a;
-  --bg-elev: rgba(255, 255, 255, 0.03);
-  --fg: #e0e0ff;
+  --bg-elev: rgba(255, 255, 255, 0.04);
+  --fg: #f1f1ff;
   --fg-strong: #ffffff;
-  --muted: rgba(255, 255, 255, 0.55);
-  --muted-soft: rgba(255, 255, 255, 0.38);
-  --border: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.18);
-  --accent-blue: rgba(100, 180, 255, 0.85);
-  --accent-blue-soft: rgba(100, 180, 255, 0.5);
-  --accent-orange: rgba(255, 160, 60, 0.9);
-  --accent-orange-soft: rgba(255, 140, 40, 0.55);
-  --accent-purple: rgba(180, 100, 255, 0.7);
+  /* Body text: ~12:1 contrast on --bg. AA-compliant for any size. */
+  --muted: rgba(255, 255, 255, 0.82);
+  /* Secondary text: ~6.7:1 contrast on --bg. AA-compliant for normal text. */
+  --muted-soft: rgba(255, 255, 255, 0.65);
+  /* Decorative-only labels (large or short): ~5:1 contrast. */
+  --muted-faint: rgba(255, 255, 255, 0.55);
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.22);
+  /* Accent text: brightened sky-blue, ~10:1 on --bg. */
+  --accent-blue: rgba(150, 205, 255, 1);
+  --accent-blue-soft: rgba(150, 205, 255, 0.85);
+  /* Accent text: brightened orange, ~9:1 on --bg. */
+  --accent-orange: rgba(255, 180, 90, 1);
+  --accent-orange-soft: rgba(255, 180, 90, 0.85);
+  --accent-purple: rgba(200, 140, 255, 1);
   --mono:
     "Courier New", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", monospace;
@@ -42,8 +48,11 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--mono);
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.65;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {

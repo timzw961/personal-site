@@ -2,6 +2,7 @@
   border-top: 1px solid var(--border);
   margin-top: 64px;
   background: rgba(0, 0, 20, 0.4);
+  padding: 16px 0 12px;
 }
 
 .inner {
@@ -9,30 +10,28 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding-top: 4px;
-  padding-bottom: 4px;
 }
 
 .coords {
   margin: 0;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--muted-soft);
 }
 
 .links {
   display: flex;
-  gap: 16px;
+  gap: 18px;
 }
 
 .links a {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--muted-soft);
+  color: var(--muted);
 }
 
 .links a:hover {
@@ -40,12 +39,12 @@
 }
 
 .copy {
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.15);
+  color: var(--muted-faint);
   text-align: center;
 }
 
@@ -53,7 +52,7 @@
   .inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 6px;
+    gap: 8px;
   }
 
   .copy {

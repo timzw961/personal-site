@@ -2,10 +2,10 @@
   display: inline-block;
   margin-top: 28px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--muted-soft);
+  color: var(--muted);
 }
 
 .back:hover {
@@ -14,10 +14,10 @@
 
 .label {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: rgba(100, 180, 255, 0.65);
+  color: var(--accent-blue);
   margin: 18px 0 12px;
 }
 
@@ -32,21 +32,21 @@
   margin: 0;
   max-width: 780px;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.7;
   color: var(--muted);
 }
 
 .section {
-  margin-top: 28px;
-  padding-top: 22px;
+  margin-top: 32px;
+  padding-top: 24px;
   border-top: 1px solid var(--border);
 }
 
 .h2 {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--fg-strong);
@@ -54,17 +54,17 @@
 
 .list {
   margin: 0;
-  padding-left: 18px;
+  padding-left: 20px;
   font-family: var(--mono);
-  font-size: 12px;
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.75;
   color: var(--muted);
 }
 
 .note {
-  margin-top: 12px;
+  margin-top: 14px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted-soft);
   font-style: italic;
 }

@@ -21,7 +21,7 @@
   align-items: center;
   gap: 8px;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--accent-orange);
@@ -34,22 +34,22 @@
 }
 
 .brandMark {
-  font-size: 14px;
-  color: rgba(255, 200, 100, 0.8);
+  font-size: 16px;
+  color: rgba(255, 210, 130, 1);
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
 }
 
 .navLink {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--muted-soft);
+  color: var(--muted);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -65,16 +65,16 @@
   }
 
   .brand {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 2px;
   }
 
   .nav {
-    gap: 14px;
+    gap: 16px;
   }
 
   .navLink {
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 1.5px;
   }
 }

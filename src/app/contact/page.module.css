@@ -1,9 +1,9 @@
 .label {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: rgba(100, 180, 255, 0.65);
+  color: var(--accent-blue);
   margin: 36px 0 14px;
 }
 
@@ -18,7 +18,7 @@
   margin: 0 0 24px;
   max-width: 740px;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 15px;
   color: var(--muted);
   line-height: 1.7;
 }
@@ -46,7 +46,7 @@
 
 .row a {
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--accent-orange);
   overflow-wrap: anywhere;
 }
@@ -56,10 +56,10 @@
 }
 
 .labelInline {
-  flex: 0 0 90px;
-  min-width: 90px;
+  flex: 0 0 100px;
+  min-width: 100px;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--muted-soft);
