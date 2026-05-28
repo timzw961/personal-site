@@ -51,130 +51,28 @@
   }
 }
 
-/* Phase A — star intact, then elongates and is drawn down a curve toward the BH.
-   Uses CSS Motion Path so the star body travels along the same curve as the
-   stream, giving an unbroken visual handoff between phases. */
-@keyframes starJourney {
-  0% {
-    offset-distance: 0%;
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-    filter: drop-shadow(0 0 10px rgba(255, 200, 80, 0.95))
-      drop-shadow(0 0 22px rgba(255, 130, 30, 0.55));
-  }
-  18% {
-    offset-distance: 0%;
-    transform: scale(1.06) rotate(0deg);
-    opacity: 1;
-    filter: drop-shadow(0 0 14px rgba(255, 220, 110, 1))
-      drop-shadow(0 0 30px rgba(255, 150, 40, 0.7));
-  }
-  45% {
-    offset-distance: 32%;
-    transform: scale(0.55) rotate(180deg);
-    opacity: 0.7;
-    filter: drop-shadow(0 0 10px rgba(255, 130, 50, 0.8));
-  }
-  70% {
-    offset-distance: 75%;
-    transform: scale(0.18) rotate(540deg);
-    opacity: 0.18;
-    filter: drop-shadow(0 0 4px rgba(255, 90, 30, 0.55));
-  }
-  85%,
-  100% {
-    offset-distance: 100%;
-    transform: scale(0) rotate(720deg);
-    opacity: 0;
+/* Material flowing around the disk via stroke-dash offset shift.
+   Shape stays static; the perceived motion comes from the dash pattern
+   sliding around the ellipse circumference. */
+@keyframes diskFlow {
+  to {
+    stroke-dashoffset: -240;
   }
 }
 
-/* Tail leading from star toward BH only matters in the first beat. */
-@keyframes tailFade {
-  0% {
-    opacity: 0.85;
-  }
-  20% {
-    opacity: 0.85;
-  }
-  38%,
-  100% {
-    opacity: 0;
+@keyframes diskFlowReverse {
+  to {
+    stroke-dashoffset: 240;
   }
 }
 
-/* Stream draws from start (near the star) to end (near the BH) while the star
-   is still moving. Holds a long visible plateau so it cross-fades INTO the disk
-   rather than disappearing first. */
-@keyframes streamDraw {
-  0% {
-    stroke-dashoffset: var(--len);
-    opacity: 0;
-  }
-  8% {
-    stroke-dashoffset: var(--len);
-    opacity: 0;
-  }
-  18% {
-    opacity: 0.95;
-  }
-  60% {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-  78% {
-    stroke-dashoffset: 0;
-    opacity: 0.7;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    opacity: 0;
-  }
-}
-
-/* Disk fades in early so it's already a faint presence while stream is still
-   visible — material "settling" rather than appearing. */
-@keyframes diskAppear {
-  0%,
-  38% {
-    opacity: 0;
-    transform: scale(0.55);
-  }
-  60% {
-    opacity: 0.45;
-    transform: scale(0.88);
-  }
-  82% {
-    opacity: 0.95;
-    transform: scale(1.02);
-  }
-  92%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Subtle continuous breathing of the inner disk for a sense of motion. */
-@keyframes diskInnerPulse {
+@keyframes diskGlow {
   0%,
   100% {
     opacity: 0.85;
-    transform: scaleX(1);
   }
   50% {
     opacity: 1;
-    transform: scaleX(1.04);
-  }
-}
-
-@keyframes diskOuterPulse {
-  0%,
-  100% {
-    opacity: 0.72;
-  }
-  50% {
-    opacity: 0.95;
   }
 }
 
@@ -198,22 +96,15 @@
   }
 }
 
-/* A soft halo around the BH that intensifies as material accumulates,
-   visually bridging stream-end to disk. */
-@keyframes haloGrow {
+@keyframes haloBreathe {
   0%,
-  20% {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-  55% {
-    opacity: 0.35;
-    transform: scale(0.95);
-  }
-  85%,
   100% {
-    opacity: 0.55;
-    transform: scale(1.05);
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.04);
   }
 }
 
@@ -228,7 +119,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  animation: fadeOut 0.5s ease-out 4s forwards;
+  animation: fadeOut 0.5s ease-out 2.7s forwards;
 }
 
 .starsBg {
@@ -258,70 +149,51 @@
   overflow: visible;
 }
 
-/* Star body — travels along the same path as the stream via offset-path. */
-.starBody {
-  /* path() must match the stream path exactly for the handoff to read */
-  offset-path: path(
-    "M188 120 Q160 124 138 138 Q112 154 100 130 Q90 102 122 90 Q150 86 162 108"
-  );
-  offset-rotate: 0deg;
-  offset-distance: 0%;
-  animation: starJourney 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) 0s forwards;
-}
-
-.tail {
-  fill: none;
-  stroke: rgba(255, 150, 50, 0.85);
-  stroke-width: 4;
-  stroke-linecap: round;
-  animation: tailFade 4s cubic-bezier(0.4, 0, 0.6, 1) 0s forwards;
-  filter: drop-shadow(0 0 6px rgba(255, 120, 30, 0.6));
-}
-
-.stream {
-  --len: 260;
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-dasharray: var(--len);
-  stroke-dashoffset: var(--len);
-  opacity: 0;
-  animation: streamDraw 4s cubic-bezier(0.4, 0.05, 0.25, 1) 0s forwards;
-  filter: drop-shadow(0 0 6px rgba(255, 100, 30, 0.55));
-}
-
-/* Halo behind the BH that grows as material accumulates — bridges stream→disk. */
+/* Halo behind the disk for depth */
 .bhHalo {
   fill: url(#bh-haloGrad);
   transform-origin: 120px 120px;
   transform-box: fill-box;
-  opacity: 0;
-  animation: haloGrow 4s cubic-bezier(0.4, 0, 0.2, 1) 0s forwards;
+  animation: haloBreathe 4s ease-in-out infinite;
 }
 
-.diskGroup {
-  transform-origin: 120px 120px;
-  transform-box: fill-box;
-  animation: diskAppear 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s forwards;
-}
-
+/* Outer disk — slow orange flow */
 .diskOuter {
   fill: none;
   stroke: rgba(255, 140, 40, 0.85);
   stroke-width: 4;
-  transform-origin: 120px 120px;
-  transform-box: fill-box;
-  animation: diskOuterPulse 2.6s ease-in-out 0s infinite;
+  stroke-dasharray: 60 80;
+  stroke-linecap: round;
+  animation:
+    diskFlow 6s linear infinite,
+    diskGlow 3.5s ease-in-out infinite;
   filter: drop-shadow(0 0 8px rgba(255, 120, 30, 0.65));
 }
 
+/* Middle band — slightly faster, contrasting orange */
+.diskMid {
+  fill: none;
+  stroke: rgba(255, 180, 70, 0.7);
+  stroke-width: 3;
+  stroke-dasharray: 40 70;
+  stroke-linecap: round;
+  animation:
+    diskFlowReverse 4.5s linear infinite,
+    diskGlow 2.8s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 150, 50, 0.55));
+}
+
+/* Inner hot ring — blue/white, fastest flow */
 .diskInner {
   fill: none;
   stroke: rgba(220, 235, 255, 0.95);
   stroke-width: 3;
-  transform-origin: 120px 120px;
-  transform-box: fill-box;
-  animation: diskInnerPulse 2s ease-in-out 0s infinite;
-  filter: drop-shadow(0 0 9px rgba(150, 210, 255, 0.7))
+  stroke-dasharray: 30 50;
+  stroke-linecap: round;
+  animation:
+    diskFlow 3.2s linear infinite,
+    diskGlow 2.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(150, 210, 255, 0.75))
     drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
 }
 
@@ -329,15 +201,15 @@
   fill: #000;
   transform-origin: 120px 120px;
   transform-box: fill-box;
-  animation: corePulse 3.4s ease-in-out 0s infinite;
+  animation: corePulse 3.4s ease-in-out infinite;
 }
 
 .svgPhotonRing {
   fill: none;
-  stroke: rgba(255, 160, 60, 0.55);
+  stroke: rgba(255, 160, 60, 0.6);
   stroke-width: 1.5;
-  animation: ringPulse 2.8s ease-in-out 0s infinite;
-  filter: drop-shadow(0 0 6px rgba(255, 120, 30, 0.45));
+  animation: ringPulse 2.8s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 120, 30, 0.5));
 }
 
 /* PROGRESS BAR */
@@ -358,7 +230,7 @@
     rgba(255, 180, 60, 1)
   );
   border-radius: 99px;
-  animation: loadProgress 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: loadProgress 2.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* TEXT */
@@ -388,5 +260,5 @@
   height: 2px;
   border-radius: 50%;
   background: rgba(255, 140, 40, 0.9);
-  animation: drift 4s ease-in infinite;
+  animation: drift 3s ease-in infinite;
 }
