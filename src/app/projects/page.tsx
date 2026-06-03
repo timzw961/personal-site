@@ -1,41 +1,44 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { Container } from "@/components/Container";
-import { projects } from "@/lib/projects";
+import { products } from "@/lib/projects";
 
 export const metadata = {
-  title: "Projects",
+  title: "Work",
 };
 
 export default function ProjectsPage() {
   return (
     <Container>
-      <div className={styles.label}>{"// Sector 02 — Projects"}</div>
-      <h1 className={styles.h1}>Projects</h1>
-      <p className={styles.p}>
-        A few case studies. Short and focused on decisions + impact.
-      </p>
+      <div className={styles.wrap}>
+        <p className={styles.eyebrow}>Work</p>
+        <h1 className={styles.h1}>Products I&rsquo;ve worked on</h1>
+        <p className={styles.lede}>
+          The products I&rsquo;ve helped build - open one to see the key work
+          behind it.
+        </p>
 
-      <div className={styles.list}>
-        {projects.map((p) => (
-          <Link
-            key={p.slug}
-            href={`/projects/${p.slug}`}
-            className={styles.item}
-          >
-            <div className={styles.itemTop}>
-              <h2 className={styles.h2}>{p.title}</h2>
-              <div className={styles.tags}>
-                {p.tags.map((t) => (
-                  <span key={t} className={styles.tag}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <p className={styles.summary}>{p.summary}</p>
-          </Link>
-        ))}
+        <ol className={styles.list}>
+          {products.map((p) => (
+            <li key={p.slug}>
+              <Link href={`/projects/${p.slug}`} className={styles.card}>
+                <span className={styles.index}>{p.period}</span>
+                <div className={styles.body}>
+                  <h2 className={styles.title}>{p.name}</h2>
+                  <p className={styles.summary}>{p.summary}</p>
+                  <ul className={styles.tags}>
+                    {p.tags.map((t) => (
+                      <li key={t} className={styles.tag}>
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                  <span className={styles.cta}>Read more</span>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ol>
       </div>
     </Container>
   );

@@ -1,33 +1,51 @@
 :root {
-  --bg: #02020a;
-  --bg-elev: rgba(255, 255, 255, 0.04);
-  --fg: #f1f1ff;
-  --fg-strong: #ffffff;
-  /* Body text: ~12:1 contrast on --bg. AA-compliant for any size. */
-  --muted: rgba(255, 255, 255, 0.82);
-  /* Secondary text: ~6.7:1 contrast on --bg. AA-compliant for normal text. */
-  --muted-soft: rgba(255, 255, 255, 0.65);
-  /* Decorative-only labels (large or short): ~5:1 contrast. */
-  --muted-faint: rgba(255, 255, 255, 0.55);
-  --border: rgba(255, 255, 255, 0.12);
-  --border-strong: rgba(255, 255, 255, 0.22);
-  /* Accent text: brightened sky-blue, ~10:1 on --bg. */
-  --accent-blue: rgba(150, 205, 255, 1);
-  --accent-blue-soft: rgba(150, 205, 255, 0.85);
-  /* Accent text: brightened orange, ~9:1 on --bg. */
-  --accent-orange: rgba(255, 180, 90, 1);
-  --accent-orange-soft: rgba(255, 180, 90, 0.85);
-  --accent-purple: rgba(200, 140, 255, 1);
-  --mono:
-    "Courier New", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", monospace;
-  --sans:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
+  /* Surfaces - cool near-white, precision-tech */
+  --bg: #f5f6f8;
+  --bg-elev: #ffffff; /* white panels */
+  --bg-elev-hover: #ffffff;
+  --bg-inset: #eceef2; /* faint inset blocks */
+
+  /* Ink ramp - every text token clears WCAG 2.1 AAA (>=7:1) on --bg */
+  --fg-strong: #0c0e12; /* ~17:1  headings */
+  --fg: #1b1e24; /* ~13:1  body */
+  --muted: #4b515b; /* ~7.2:1 secondary text */
+  --muted-soft: #4b515b; /* kept AAA-safe; no sub-7:1 text token */
+  --muted-faint: #4b515b;
+
+  /* Hairlines, rules & structural grid (decorative, not text) */
+  --border: rgba(12, 14, 18, 0.12);
+  --border-strong: rgba(12, 14, 18, 0.24);
+  --border-hover: rgba(12, 14, 18, 0.55);
+  --grid-line: rgba(12, 14, 18, 0.05);
+
+  /* Sharp red - >=7:1 on --bg, AAA for text */
+  --accent: #a4161a;
+  --accent-soft: rgba(164, 22, 26, 0.5);
+  --accent-deep: #7d0f0f; /* hover / pressed */
+  --accent-faint: rgba(164, 22, 26, 0.07);
+
+  /* Type stacks - fall back to system sans before next/font hydrates */
+  --sans-fallback: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono-fallback: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --display: var(--font-sans), var(--sans-fallback);
+  --sans: var(--font-sans), var(--sans-fallback);
+  --mono: var(--font-mono), var(--mono-fallback);
+
+  /* Rhythm */
+  --container-narrow: 720px;
+  --container: 1080px;
+  --container-wide: 1240px;
+  --section-pad: clamp(64px, 9vw, 120px);
+  --gutter: clamp(20px, 4vw, 32px);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0.65, 0.25, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
 }
 
 html,
@@ -40,30 +58,94 @@ html {
   scroll-behavior: smooth;
 }
 
-section[id] {
-  scroll-margin-top: 70px;
-}
-
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--mono);
-  font-size: 15px;
-  line-height: 1.65;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
   min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-a {
-  color: var(--accent-orange);
-  text-decoration: none;
-  transition: color 0.2s;
+main {
+  position: relative;
+  z-index: 1;
 }
-a:hover {
-  color: var(--accent-blue);
+
+/* Sticky-header offset for anchor jumps */
+section[id] {
+  scroll-margin-top: 88px;
+}
+
+/* Typography defaults - geometric grotesque, tight */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  color: var(--fg-strong);
+  margin: 0;
 }
 
 p {
-  color: var(--muted);
+  color: var(--fg);
+  margin: 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 160ms var(--ease-out);
+}
+a:hover {
+  color: var(--accent-deep);
+}
+
+/* Visible focus for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 0;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* Scroll-triggered reveal - used by <Reveal> client component */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 720ms var(--ease-out),
+    transform 720ms var(--ease-out);
+  will-change: opacity, transform;
+}
+
+[data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Honor reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
 }

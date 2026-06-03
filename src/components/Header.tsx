@@ -3,7 +3,6 @@ import styles from "./Header.module.css";
 import { Container } from "./Container";
 
 const navItems = [
-  { label: "About", href: "/#about" },
   { label: "Work", href: "/#work" },
   { label: "Skills", href: "/#skills" },
   { label: "Contact", href: "/#contact" },
@@ -14,8 +13,8 @@ export function Header() {
     <header className={styles.header}>
       <Container>
         <div className={styles.inner}>
-          <Link className={styles.brand} href="/">
-            <span className={styles.brandMark}>⬡</span> Timothy.dev
+          <Link className={styles.brand} href="/" aria-label="Timothy Wang">
+            <span className={styles.brandName}>Timothy Wang</span>
           </Link>
 
           <nav className={styles.nav} aria-label="Primary">

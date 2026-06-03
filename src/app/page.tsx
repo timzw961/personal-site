@@ -1,336 +1,220 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { Container } from "@/components/Container";
-import { HeroStars } from "@/components/HeroStars";
-import { projects } from "@/lib/projects";
+import { Reveal } from "@/components/Reveal";
+import { products } from "@/lib/projects";
 
-const projectAccents = [
+const skillGroups: { label: string; items: string[] }[] = [
   {
-    bg: "#04050f",
-    glow: "#4a90ff",
-    planet:
-      "radial-gradient(circle at 35% 35%, #7ab8ff, #1a5daa, #04214a)",
-    tagBg: "rgba(74, 144, 255, 0.12)",
-    tagFg: "rgba(120, 180, 255, 0.85)",
-    tagBorder: "rgba(74, 144, 255, 0.25)",
-    delay: "0s",
+    label: "Languages",
+    items: ["TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3 / SASS"],
   },
   {
-    bg: "#080510",
-    glow: "#c27a3a",
-    planet:
-      "radial-gradient(circle at 40% 35%, #e8b87c, #c27a3a, #6b3a1a)",
-    tagBg: "rgba(200, 120, 50, 0.12)",
-    tagFg: "rgba(230, 160, 80, 0.85)",
-    tagBorder: "rgba(200, 120, 50, 0.25)",
-    delay: "1.3s",
+    label: "Frameworks",
+    items: ["React", "Next.js", "Redux", "Design systems"],
   },
   {
-    bg: "#030a05",
-    glow: "#4a9a6a",
-    planet:
-      "radial-gradient(circle at 38% 33%, #a8e8a8, #4a9a6a, #1a4a2a)",
-    tagBg: "rgba(74, 180, 100, 0.12)",
-    tagFg: "rgba(120, 220, 140, 0.85)",
-    tagBorder: "rgba(74, 180, 100, 0.25)",
-    delay: "2.5s",
+    label: "Web architecture",
+    items: ["SSR / SSG", "BFF", "Node.js", "GraphQL / REST", "Feature flags"],
+  },
+  {
+    label: "Accessibility",
+    items: ["WCAG 2.1 AA", "ARIA", "Semantic HTML", "axe-core / Pa11y"],
+  },
+  {
+    label: "Testing & quality",
+    items: ["Cypress", "Jest", "React Testing Library", "TDD"],
+  },
+  {
+    label: "AI tooling",
+    items: ["Claude", "Gemini", "OpenAI Codex"],
+  },
+  {
+    label: "DevOps",
+    items: ["Buildkite", "CI/CD", "Git", "Agile / Lean"],
+  },
+  {
+    label: "Platforms",
+    items: ["Splunk", "Postman", "Contentful", "Storybook", "Optimizely"],
   },
 ];
 
-const skills = [
-  { label: "React", color: "#7ab8ff", duration: "2.1s" },
-  { label: "TypeScript", color: "#bd93f9", duration: "3.4s" },
-  { label: "Next.js", color: "#50fa7b", duration: "1.8s" },
-  { label: "CSS / Tailwind", color: "#ffb86c", duration: "2.7s" },
-  { label: "Cypress", color: "#8be9fd", duration: "2.3s" },
-  { label: "CI / Buildkite", color: "#f1fa8c", duration: "1.6s" },
-  { label: "Accessibility", color: "#a8e8a8", duration: "3.7s" },
-  { label: "Performance", color: "#ff5555", duration: "2.9s" },
-  { label: "Testing strategy", color: "#ff79c6", duration: "3.1s" },
-  { label: "Node.js", color: "#c27a3a", duration: "2.4s" },
-];
+function SectionLabel({ index, label }: { index: string; label: string }) {
+  return (
+    <div className={styles.sectionLabel}>
+      <span className={styles.sectionIndex}>{index}</span>
+      <span className={styles.sectionText}>{label}</span>
+    </div>
+  );
+}
 
 export default function HomePage() {
   return (
     <>
+      {/* HERO */}
       <section className={styles.hero}>
-        <HeroStars
-          count={60}
-          className={styles.heroStars}
-          starClassName={styles.hstar}
-        />
-
         <Container>
-          <div className={styles.heroInner}>
-            <div className={styles.heroContent}>
-              <div className={styles.heroEyebrow}>
-                {"// Transmission incoming"}
-              </div>
-              <h1 className={styles.heroName}>Timothy Wang</h1>
-              <p className={styles.heroTitle}>
-                Senior Frontend Engineer · Sydney
-              </p>
-              <div className={styles.heroBtns}>
-                <Link className={styles.heroBtn} href="/#work">
-                  View Work
-                </Link>
-                <Link
-                  className={`${styles.heroBtn} ${styles.heroBtnGhost}`}
-                  href="/#contact"
-                >
-                  Contact Me
-                </Link>
-              </div>
+          <Reveal className={styles.heroInner}>
+            <p className={styles.heroEyebrow}>Senior Frontend Engineer</p>
+
+            <h1 className={styles.heroTitle}>Timothy Wang</h1>
+
+            <p className={styles.heroLede}>
+              I build high-traffic, accessible web applications in React and
+              TypeScript &mdash; shipping production features across booking
+              and financial services platforms, with a focus on automated
+              testing, WCAG compliance, and the systems that keep frontends
+              healthy as they scale.
+            </p>
+
+            <div className={styles.heroCtas}>
+              <Link className={styles.btnPrimary} href="/#work">
+                See my work
+              </Link>
+              <a
+                className={styles.btnGhost}
+                href="mailto:timothy.zehao.wang@gmail.com"
+              >
+                Get in touch
+              </a>
             </div>
 
-            <div className={styles.solarSystem} aria-hidden="true">
-              <div
-                className={styles.orbitRing}
-                style={{ width: 80, height: 80 }}
-              />
-              <div
-                className={styles.orbitRing}
-                style={{ width: 130, height: 130 }}
-              />
-              <div
-                className={styles.orbitRing}
-                style={{ width: 190, height: 190 }}
-              />
-              <div className={styles.sun} />
-              <div
-                className={styles.planetWrapper}
-                style={
-                  {
-                    width: 80,
-                    height: 80,
-                    "--spd": "5s",
-                  } as React.CSSProperties
-                }
-              >
-                <div
-                  className={styles.planet}
-                  style={{
-                    width: 10,
-                    height: 10,
-                    background:
-                      "radial-gradient(circle, #9ecfff, #4a90c4)",
-                  }}
-                />
+            <dl className={styles.heroMeta}>
+              <div className={styles.heroMetaItem}>
+                <dt>Based in</dt>
+                <dd>Sydney, AU</dd>
               </div>
-              <div
-                className={styles.planetWrapper}
-                style={
-                  {
-                    width: 130,
-                    height: 130,
-                    "--spd": "9s",
-                  } as React.CSSProperties
-                }
-              >
-                <div
-                  className={styles.planet}
-                  style={{
-                    width: 14,
-                    height: 14,
-                    background:
-                      "radial-gradient(circle, #e8a87c, #c27a3a)",
-                  }}
-                />
+              <div className={styles.heroMetaItem}>
+                <dt>Open to</dt>
+                <dd>Remote &middot; Hybrid</dd>
               </div>
-              <div
-                className={styles.planetWrapper}
-                style={
-                  {
-                    width: 190,
-                    height: 190,
-                    "--spd": "15s",
-                  } as React.CSSProperties
-                }
-              >
-                <div
-                  className={styles.planet}
-                  style={{
-                    width: 18,
-                    height: 18,
-                    background:
-                      "radial-gradient(circle, #a8d8a8, #4a8a6a)",
-                  }}
-                />
+              <div className={styles.heroMetaItem}>
+                <dt>Focus</dt>
+                <dd>Frontend &middot; Testing &middot; A11y</dd>
               </div>
-            </div>
-          </div>
+            </dl>
+          </Reveal>
         </Container>
       </section>
 
-      <section id="about" className={styles.section}>
-        <Container>
-          <div className={styles.sectionLabel}>{"// Sector 01 — About"}</div>
-          <div className={styles.aboutGrid}>
-            <div
-              className={styles.aboutCard}
-              style={
-                { "--ac": "rgba(100,180,255,0.5)" } as React.CSSProperties
-              }
-            >
-              <div className={styles.aboutIcon}>🛰️</div>
-              <div className={styles.aboutTitle}>Mission</div>
-              <div className={styles.aboutBody}>
-                Building fast, accessible, delightful interfaces that connect
-                people to what matters.
-              </div>
-            </div>
-            <div
-              className={styles.aboutCard}
-              style={
-                { "--ac": "rgba(180,100,255,0.5)" } as React.CSSProperties
-              }
-            >
-              <div className={styles.aboutIcon}>🪐</div>
-              <div className={styles.aboutTitle}>Base of Operations</div>
-              <div className={styles.aboutBody}>
-                Sydney, Australia. Open to remote missions across any timezone.
-              </div>
-            </div>
-            <div
-              className={styles.aboutCard}
-              style={
-                { "--ac": "rgba(255,180,60,0.5)" } as React.CSSProperties
-              }
-            >
-              <div className={styles.aboutIcon}>⭐</div>
-              <div className={styles.aboutTitle}>Experience</div>
-              <div className={styles.aboutBody}>
-                Years of production frontend at startups and scale-ups —
-                accessibility, testing, and CI as first-class concerns.
-              </div>
-            </div>
-            <div
-              className={styles.aboutCard}
-              style={
-                { "--ac": "rgba(100,255,180,0.5)" } as React.CSSProperties
-              }
-            >
-              <div className={styles.aboutIcon}>🔭</div>
-              <div className={styles.aboutTitle}>Currently Exploring</div>
-              <div className={styles.aboutBody}>
-                Motion design, WebGL shaders, and AI-assisted UI generation.
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
+      {/* WORK */}
       <section id="work" className={styles.section}>
         <Container>
-          <div className={styles.sectionLabel}>{"// Sector 02 — Projects"}</div>
-          <div className={styles.workGrid}>
-            {projects.map((project, i) => {
-              const accent = projectAccents[i % projectAccents.length];
-              return (
+          <Reveal>
+          <SectionLabel index="01" label="Work" />
+
+          <ol className={styles.workList}>
+            {products.map((product, i) => (
+              <li key={product.slug} className={styles.workItem}>
                 <Link
-                  key={project.slug}
-                  href={`/projects/${project.slug}`}
+                  href={`/projects/${product.slug}`}
                   className={styles.workCard}
                 >
-                  <div
-                    className={styles.workHeader}
-                    style={{ background: accent.bg }}
-                  >
-                    <div
-                      className={styles.planetGlow}
-                      style={{ background: accent.glow }}
-                    />
-                    <div
-                      className={styles.planetVis}
-                      style={{
-                        background: accent.planet,
-                        animationDelay: accent.delay,
-                      }}
-                    />
-                  </div>
-                  <div className={styles.workBody}>
-                    <div className={styles.workTitle}>{project.title}</div>
-                    <div className={styles.workDesc}>{project.summary}</div>
-                    <div className={styles.workTags}>
-                      {project.tags.map((t) => (
-                        <span
-                          key={t}
-                          className={styles.workTag}
-                          style={{
-                            background: accent.tagBg,
-                            color: accent.tagFg,
-                            border: `1px solid ${accent.tagBorder}`,
-                          }}
-                        >
+                  <div className={styles.workMeta}>
+                    <span className={styles.workIndex} aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                      <span className={styles.workIndexTotal}>
+                        / {String(products.length).padStart(2, "0")}
+                      </span>
+                    </span>
+
+                    <h3 className={styles.workTitle}>{product.name}</h3>
+
+                    <p className={styles.workSummary}>{product.summary}</p>
+
+                    <ul className={styles.workTags}>
+                      {product.tags.map((t) => (
+                        <li key={t} className={styles.workTag}>
                           {t}
-                        </span>
+                        </li>
                       ))}
+                    </ul>
+
+                    <div className={styles.workFooter}>
+                      <span className={styles.workPeriod}>{product.period}</span>
+                      <span className={styles.workCta}>
+                        Read more
+                        <span className={styles.workCtaArrow} aria-hidden="true">
+                          →
+                        </span>
+                      </span>
                     </div>
                   </div>
+
+                  <figure className={styles.workThumb}>
+                    {product.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        className={styles.workThumbImg}
+                        src={product.image}
+                        alt={product.imageAlt ?? product.name}
+                      />
+                    ) : (
+                      <span
+                        className={styles.workThumbPlaceholder}
+                        aria-hidden="true"
+                      >
+                        Image
+                      </span>
+                    )}
+                    <span className={styles.workThumbTick} aria-hidden="true" />
+                  </figure>
                 </Link>
-              );
-            })}
-          </div>
+              </li>
+            ))}
+          </ol>
+          </Reveal>
         </Container>
       </section>
 
+      {/* SKILLS */}
       <section id="skills" className={styles.section}>
         <Container>
-          <div className={styles.sectionLabel}>
-            {"// Sector 03 — Star Cluster · Skills"}
-          </div>
+          <Reveal>
+          <SectionLabel index="02" label="Stack & skills" />
+
           <div className={styles.skillsGrid}>
-            {skills.map((s) => (
-              <div key={s.label} className={styles.skillStar}>
-                <span
-                  className={styles.skillDot}
-                  style={
-                    {
-                      background: s.color,
-                      animationDuration: s.duration,
-                    } as React.CSSProperties
-                  }
-                />
-                {s.label}
+            {skillGroups.map((group) => (
+              <div key={group.label} className={styles.skillGroup}>
+                <h4 className={styles.skillGroupTitle}>{group.label}</h4>
+                <ul className={styles.skillList}>
+                  {group.items.map((item) => (
+                    <li key={item} className={styles.skillItem}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
+          </Reveal>
         </Container>
       </section>
 
+      {/* CONTACT */}
       <section id="contact" className={styles.section}>
         <Container>
-          <div className={styles.sectionLabel}>{"// Sector 04 — Hail Frequency"}</div>
+          <Reveal>
+          <SectionLabel index="03" label="Get in touch" />
+
           <div className={styles.contactInner}>
-            <div className={styles.contactHeading}>Open for transmissions</div>
-            <div className={styles.contactSub}>
-              Available for freelance · full-time · collaborations
-            </div>
-            <div className={styles.contactBtns}>
-              <a
-                className={`${styles.contactBtn} ${styles.contactBtnPrimary}`}
-                href="mailto:timothy.zehao.wang@gmail.com"
-              >
-                Send a signal
-              </a>
-              <a
-                className={`${styles.contactBtn} ${styles.contactBtnSecondary}`}
-                href="https://github.com/timzw961"
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub ↗
-              </a>
-              <a
-                className={`${styles.contactBtn} ${styles.contactBtnSecondary}`}
-                href="https://www.linkedin.com/in/timothy-w-8bbb521b0/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                LinkedIn ↗
-              </a>
-            </div>
+            <h2 className={styles.contactHeading}>
+              Let&rsquo;s build something good.
+            </h2>
+            <p className={styles.contactLede}>
+              I&rsquo;m open to senior frontend roles and select contract
+              work. The best way to reach me is email &mdash; I reply within a
+              day or two.
+            </p>
+
+            <a
+              href="mailto:timothy.zehao.wang@gmail.com"
+              className={styles.contactEmail}
+            >
+              timothy.zehao.wang@gmail.com
+            </a>
           </div>
+          </Reveal>
         </Container>
       </section>
     </>

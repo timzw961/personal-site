@@ -1,41 +1,39 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 10;
-  background: rgba(0, 0, 30, 0.78);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border);
+  z-index: 50;
+  background: rgba(245, 246, 248, 0.8);
+  backdrop-filter: saturate(120%) blur(10px);
+  -webkit-backdrop-filter: saturate(120%) blur(10px);
+  border-bottom: 1px solid var(--border-strong);
 }
 
 .inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  min-height: 58px;
+  gap: 24px;
+  min-height: 64px;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-family: var(--mono);
-  font-size: 14px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--accent-orange);
+  color: var(--fg-strong);
   text-decoration: none;
+  transition: color 160ms var(--ease-out);
 }
 
 .brand:hover {
-  color: var(--accent-orange);
+  color: var(--accent);
   text-decoration: none;
 }
 
-.brandMark {
-  font-size: 16px;
-  color: rgba(255, 210, 130, 1);
+.brandName {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
 }
 
 .nav {
@@ -46,27 +44,27 @@
 
 .navLink {
   font-family: var(--mono);
-  font-size: 13px;
-  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 160ms var(--ease-out);
 }
 
 .navLink:hover {
-  color: var(--fg-strong);
+  color: var(--accent);
   text-decoration: none;
 }
 
 @media (max-width: 640px) {
   .inner {
-    min-height: 52px;
+    min-height: 56px;
   }
 
-  .brand {
-    font-size: 12px;
-    letter-spacing: 2px;
+  .brandName {
+    font-size: 16px;
   }
 
   .nav {
@@ -74,7 +72,17 @@
   }
 
   .navLink {
-    font-size: 12px;
-    letter-spacing: 1.5px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+}
+
+@media (max-width: 440px) {
+  .nav {
+    gap: 13px;
+  }
+
+  .navLink {
+    letter-spacing: 0.04em;
   }
 }

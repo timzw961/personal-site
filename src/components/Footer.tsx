@@ -6,28 +6,37 @@ export function Footer() {
     <footer className={styles.footer}>
       <Container>
         <div className={styles.inner}>
-          <p className={styles.coords}>
-            Coordinates: 33.8688° S · 151.2093° E · Milky Way
+          <p className={styles.note}>
+            Designed &amp; built by Timothy Wang
+            <span className={styles.dot} aria-hidden="true">·</span>
+            <span className={styles.year}>{new Date().getFullYear()}</span>
           </p>
 
-          <div className={styles.links}>
+          <nav className={styles.links} aria-label="Social">
             <a
-              href="https://www.linkedin.com/in/timothy-w-8bbb521b0/"
+              href="mailto:timothy.zehao.wang@gmail.com"
+              className={styles.link}
+            >
+              Email
+            </a>
+            <a
+              href="https://www.linkedin.com/in/timothy-w"
               target="_blank"
               rel="noreferrer"
+              className={styles.link}
             >
-              LinkedIn ↗
+              LinkedIn
             </a>
             <a
               href="https://github.com/timzw961"
               target="_blank"
               rel="noreferrer"
+              className={styles.link}
             >
-              GitHub ↗
+              GitHub
             </a>
-          </div>
+          </nav>
         </div>
-        <p className={styles.copy}>Copyright 2026 Timothy Wang</p>
       </Container>
     </footer>
   );
