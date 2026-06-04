@@ -1,0 +1,40 @@
+.section {
+  position: relative;
+  padding: var(--section-pad) 0;
+  border-top: 1px solid var(--border-strong);
+  scroll-margin-top: 88px;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 52px;
+}
+
+.sectionIndex {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.sectionText {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-strong);
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 56px 0;
+  }
+
+  .sectionLabel {
+    margin-bottom: 36px;
+  }
+}

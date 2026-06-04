@@ -4,7 +4,8 @@ import { Container } from "./Container";
 
 const navItems = [
   { label: "Work", href: "/#work" },
-  { label: "Skills", href: "/#skills" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Recognition", href: "/#recognition" },
   { label: "Contact", href: "/#contact" },
 ];
 

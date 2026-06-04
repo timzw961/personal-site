@@ -61,7 +61,7 @@
   color: var(--fg-strong);
 }
 
-.lede {
+.intro {
   margin: 0 0 26px;
   max-width: 640px;
   font-size: clamp(18px, 1.7vw, 22px);

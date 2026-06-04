@@ -13,7 +13,7 @@ export default function ProjectsPage() {
       <div className={styles.wrap}>
         <p className={styles.eyebrow}>Work</p>
         <h1 className={styles.h1}>Products I&rsquo;ve worked on</h1>
-        <p className={styles.lede}>
+        <p className={styles.intro}>
           The products I&rsquo;ve helped build - open one to see the key work
           behind it.
         </p>
@@ -22,7 +22,6 @@ export default function ProjectsPage() {
           {products.map((p) => (
             <li key={p.slug}>
               <Link href={`/projects/${p.slug}`} className={styles.card}>
-                <span className={styles.index}>{p.period}</span>
                 <div className={styles.body}>
                   <h2 className={styles.title}>{p.name}</h2>
                   <p className={styles.summary}>{p.summary}</p>

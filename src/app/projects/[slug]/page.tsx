@@ -3,18 +3,20 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import styles from "./page.module.css";
 import { Container } from "@/components/Container";
-import { products } from "@/lib/projects";
+import { products, sideProjects } from "@/lib/projects";
+
+const allProjects = [...products, ...sideProjects];
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
 function getProduct(slug: string) {
-  return products.find((p) => p.slug === slug);
+  return allProjects.find((p) => p.slug === slug);
 }
 
 export function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
+  return allProjects.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -41,18 +43,22 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const product = getProduct(slug);
   if (!product) return notFound();
 
+  const isSide = sideProjects.some((p) => p.slug === slug);
+
   return (
     <Container>
       <div className={styles.wrap}>
-        <Link className={styles.back} href="/#work">
-          <span aria-hidden="true">←</span> All work
+        <Link
+          className={styles.back}
+          href={isSide ? "/#side-projects" : "/#work"}
+        >
+          <span aria-hidden="true">←</span>{" "}
+          {isSide ? "All side projects" : "All work"}
         </Link>
 
-        <p className={styles.eyebrow}>
-          {product.role} · {product.period}
-        </p>
+        <p className={styles.eyebrow}>{product.role}</p>
         <h1 className={styles.h1}>{product.name}</h1>
-        <p className={styles.lede}>{product.summary}</p>
+        <p className={styles.intro}>{product.summary}</p>
 
         <ul className={styles.tags}>
           {product.tags.map((t) => (
@@ -62,21 +68,25 @@ export default async function ProductDetailPage({ params }: PageProps) {
           ))}
         </ul>
 
-        <h2 className={styles.workHeading}>Key work</h2>
+        {product.work.length > 0 ? (
+          <>
+            <h2 className={styles.workHeading}>Key work</h2>
 
-        <ol className={styles.work}>
-          {product.work.map((item) => (
-            <li key={item.title} className={styles.workItem}>
-              <h3 className={styles.workTitle}>{item.title}</h3>
-              <p className={styles.workSummary}>{item.summary}</p>
-              <ul className={styles.list}>
-                {item.bullets.map((b) => (
-                  <li key={b}>{b}</li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ol>
+            <ol className={styles.work}>
+              {product.work.map((item) => (
+                <li key={item.title} className={styles.workItem}>
+                  <h3 className={styles.workTitle}>{item.title}</h3>
+                  <p className={styles.workSummary}>{item.summary}</p>
+                  <ul className={styles.list}>
+                    {item.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ol>
+          </>
+        ) : null}
 
         {product.note ? <p className={styles.note}>{product.note}</p> : null}
       </div>

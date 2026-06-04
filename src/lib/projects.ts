@@ -27,6 +27,8 @@ export const products: Product[] = [
     summary:
       "A high-traffic hotel booking platform. I shipped production features in React and TypeScript, and owned the testing, accessibility, and experimentation systems behind critical booking flows.",
     tags: ["React", "TypeScript", "Cypress", "Accessibility"],
+    image: "/work/qantas-hotels.png",
+    imageAlt: "Qantas Hotels hotel booking page",
     work: [
       {
         title: "CI & E2E test speedup",
@@ -79,6 +81,8 @@ export const products: Product[] = [
     summary:
       "The payments experience within Qantas Money. I built Next.js features across key customer payment flows and improved cross-platform analytics and reliability.",
     tags: ["Next.js", "TypeScript", "GA4", "Payments"],
+    image: "/work/qantas-pay.png",
+    imageAlt: "Qantas Pay landing page",
     work: [
       {
         title: "Payment flow features",
@@ -111,5 +115,28 @@ export const products: Product[] = [
         ],
       },
     ],
+  },
+];
+
+export const sideProjects: Product[] = [
+  {
+    slug: "rally-reserve",
+    name: "Rally Reserve",
+    role: "Side project",
+    period: "2024",
+    summary:
+      "A side project exploring real-time booking and reservation flows, built end-to-end with a focus on a clean, fast interface.",
+    tags: ["React", "TypeScript", "Node.js"],
+    work: [],
+  },
+  {
+    slug: "automating-job-search",
+    name: "Automating Job Search",
+    role: "Side project",
+    period: "2024",
+    summary:
+      "A personal automation project that streamlines the repetitive parts of the job search, from sourcing roles to tailoring applications.",
+    tags: ["Python", "Automation", "Playwright"],
+    work: [],
   },
 ];
