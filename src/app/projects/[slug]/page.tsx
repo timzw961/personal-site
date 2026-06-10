@@ -3,20 +3,18 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import styles from "./page.module.css";
 import { Container } from "@/components/Container";
-import { products, sideProjects } from "@/lib/projects";
-
-const allProjects = [...products, ...sideProjects];
+import { products } from "@/lib/projects";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
 function getProduct(slug: string) {
-  return allProjects.find((p) => p.slug === slug);
+  return products.find((p) => p.slug === slug);
 }
 
 export function generateStaticParams() {
-  return allProjects.map((p) => ({ slug: p.slug }));
+  return products.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -43,17 +41,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const product = getProduct(slug);
   if (!product) return notFound();
 
-  const isSide = sideProjects.some((p) => p.slug === slug);
-
   return (
     <Container>
       <div className={styles.wrap}>
         <Link
           className={styles.back}
-          href={isSide ? "/#side-projects" : "/#work"}
+          href="/#work"
         >
-          <span aria-hidden="true">←</span>{" "}
-          {isSide ? "All side projects" : "All work"}
+          <span aria-hidden="true">←</span> All work
         </Link>
 
         <p className={styles.eyebrow}>{product.role}</p>

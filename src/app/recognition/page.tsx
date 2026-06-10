@@ -21,8 +21,8 @@ export default function RecognitionPage() {
         <p className={styles.eyebrow}>Recognition</p>
         <h1 className={styles.h1}>ThankQ recognition</h1>
         <p className={styles.intro}>
-          Formal recognition from colleagues across Qantas &mdash; Hotels,
-          Qantas Money, Core Platforms, Loyalty, and Group Cyber &mdash; posted
+          Formal recognition from colleagues across Qantas &ndash; Hotels,
+          Qantas Money, Core Platforms, Loyalty, and Group Cyber &ndash; posted
           on the internal ThankQ platform during my time there.
         </p>
 

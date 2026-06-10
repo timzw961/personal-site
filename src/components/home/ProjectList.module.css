@@ -34,19 +34,20 @@
   order: -1;
 }
 
-.workCard:hover {
+/* hover affordances only apply to linked cards (a), not the static WIP card */
+a.workCard:hover {
   text-decoration: none;
 }
 
-.workCard:hover .workTitle {
+a.workCard:hover .workTitle {
   color: var(--accent);
 }
 
-.workCard:hover .workThumb {
+a.workCard:hover .workThumbInner {
   border-color: var(--border-hover);
 }
 
-.workCard:hover .workCtaArrow {
+a.workCard:hover .workCtaArrow {
   transform: translateX(5px);
 }
 
@@ -118,33 +119,61 @@
   transition: transform 200ms var(--ease-out);
 }
 
+.workStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.workStatus::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
 /* image hero - placeholder until a real image path is set */
 .workThumb {
-  position: relative;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.workThumbInner {
   width: 100%;
-  aspect-ratio: 3 / 2;
-  overflow: hidden;
   background: var(--bg-elev);
   border: 1px solid var(--border-strong);
-  display: grid;
-  place-items: center;
   transition: border-color 200ms var(--ease-out);
+  /* height comes from the image's natural aspect ratio - no crop, no letterbox */
 }
 
 .workThumbImg {
-  position: absolute;
-  inset: 0;
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
+}
+
+.workThumbNote {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+  color: var(--muted);
 }
 
 .workThumbPlaceholder {
-  position: absolute;
-  inset: 0;
   display: grid;
   place-items: center;
+  width: 100%;
+  aspect-ratio: 16 / 10;
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 400;
@@ -168,7 +197,6 @@
 
   .workThumb {
     order: -1;
-    aspect-ratio: 16 / 10;
   }
 
   .workItem:nth-child(even) .workThumb {

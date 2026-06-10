@@ -10,7 +10,7 @@ export const recognitions: Recognition[] = [
   // ---- Featured (homepage) ----
   {
     quote:
-      "You've done so much to improve our E2E confidence and reduce flakiness, helping us move faster with greater trust in releases. Not just shipping features, but improving the foundations of the product — this is the kind of engineering work that raises standards for the team.",
+      "You've done so much to improve our E2E confidence and reduce flakiness, helping us move faster with greater trust in releases. Not just shipping features, but improving the foundations of the product – this is the kind of engineering work that raises standards for the team.",
     author: "Shubham S.",
     team: "Qantas Hotels",
     date: "Mar 2026",
@@ -18,7 +18,7 @@ export const recognitions: Recognition[] = [
   },
   {
     quote:
-      "You've shown everyone the standard of how a dev should be — curious, willing to get to the bottom of things, and documenting as you go. You communicate well and know how to navigate different roles and characters. It was such a pleasure to work with you.",
+      "You've shown everyone the standard of how a dev should be – curious, willing to get to the bottom of things, and documenting as you go. You communicate well and know how to navigate different roles and characters. It was such a pleasure to work with you.",
     author: "Chanda E.",
     team: "Qantas Hotels",
     date: "Mar 2026",
@@ -34,7 +34,7 @@ export const recognitions: Recognition[] = [
   },
   {
     quote:
-      "ThankQ to Tim for his work in the QPay squad. He got up to speed quickly and contributed 17 story points in a sprint — more than expected — while maintaining great attention to detail.",
+      "ThankQ to Tim for his work in the QPay squad. He got up to speed quickly and contributed 17 story points in a sprint – more than expected – while maintaining great attention to detail.",
     author: "Adam F.",
     team: "Qantas Money",
     date: "Nov 2024",
@@ -73,7 +73,7 @@ export const recognitions: Recognition[] = [
   },
   {
     quote:
-      "Even though you're earlier in your career, I've always seen you as someone incredibly active and always willing to help out — that doesn't go unnoticed. Thank you for everything you did to keep things running smoothly. You're gonna kill it!",
+      "Even though you're earlier in your career, I've always seen you as someone incredibly active and always willing to help out – that doesn't go unnoticed. Thank you for everything you did to keep things running smoothly. You're gonna kill it!",
     author: "Marta S.",
     team: "Qantas Hotels",
     date: "Mar 2026",
@@ -122,7 +122,7 @@ export const recognitions: Recognition[] = [
   },
   {
     quote:
-      "A massive shout-out for completing your first Discovery independently with Core Platforms. I'd especially commend your attention to detail — you displayed the competency of a seasoned TEM.",
+      "A massive shout-out for completing your first Discovery independently with Core Platforms. I'd especially commend your attention to detail – you displayed the competency of a seasoned TEM.",
     author: "Sanjeev S.",
     team: "Loyalty Tech Enablement",
     date: "Jul 2024",
@@ -143,7 +143,7 @@ export const recognitions: Recognition[] = [
   },
   {
     quote:
-      "Thank you for being a valuable member of the Cyber Automation team. You were only with us a few months but already achieved a lot despite tight timelines — including the SharePoint site and running the daily stand-up. Happy coding!",
+      "Thank you for being a valuable member of the Cyber Automation team. You were only with us a few months but already achieved a lot despite tight timelines – including the SharePoint site and running the daily stand-up. Happy coding!",
     author: "Joanne L.",
     team: "Group Cyber Automation",
     date: "Dec 2023",

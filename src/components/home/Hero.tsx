@@ -16,7 +16,7 @@ export function Hero() {
             <div className={styles.heroMain}>
               <p className={styles.heroLede}>
                 I build high-traffic, accessible web applications in React and
-                TypeScript &mdash; shipping production features across booking
+                TypeScript &ndash; shipping production features across booking
                 and financial services platforms, with a focus on automated
                 testing, WCAG compliance, and the systems that keep frontends
                 healthy as they scale.

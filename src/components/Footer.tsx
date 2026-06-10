@@ -12,7 +12,15 @@ export function Footer() {
             <span className={styles.year}>{new Date().getFullYear()}</span>
           </p>
 
-          <nav className={styles.links} aria-label="Social">
+          <nav className={styles.links} aria-label="Links">
+            <a
+              href="/Timothy-Wang-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.link}
+            >
+              R&eacute;sum&eacute;
+            </a>
             <a
               href="mailto:timothy.zehao.wang@gmail.com"
               className={styles.link}

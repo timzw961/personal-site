@@ -14,6 +14,12 @@ export type Product = {
   /** Hero image path (e.g. "/work/qantas-hotels.jpg"). Falls back to a placeholder when unset. */
   image?: string;
   imageAlt?: string;
+  /** Small caption shown beneath the image (e.g. a mockup disclaimer). */
+  imageNote?: string;
+  /** External link (e.g. a GitHub repo). When set, the card opens this instead of a detail page. */
+  href?: string;
+  /** Marks the project as in progress (shown as a label, no link). */
+  wip?: boolean;
   work: WorkItem[];
   note?: string;
 };
@@ -104,16 +110,6 @@ export const products: Product[] = [
           "Improved cross-platform visibility into how customers use QPay.",
         ],
       },
-      {
-        title: "Duplicate-charge prevention",
-        summary:
-          "Led discovery and delivery of a duplicate-check solution that eliminated repeat travel insurance points redemption charges.",
-        bullets: [
-          "Led technical discovery to find the root cause of repeat charges.",
-          "Delivered a duplicate-check solution into the redemption flow.",
-          "Eliminated erroneous transactions for customers.",
-        ],
-      },
     ],
   },
 ];
@@ -125,8 +121,22 @@ export const sideProjects: Product[] = [
     role: "Side project",
     period: "2024",
     summary:
-      "A side project exploring real-time booking and reservation flows, built end-to-end with a focus on a clean, fast interface.",
-    tags: ["React", "TypeScript", "Node.js"],
+      "Multi-tenant court-booking platform with per-venue timezones, loyalty rewards, recurring bookings, and concurrency-safe reservations – backed by 300+ unit tests and a Playwright E2E suite.",
+    tags: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Prisma 7",
+      "PostgreSQL",
+      "Auth.js (OAuth + magic-link)",
+      "Zod",
+      "Jest + RTL",
+      "Playwright",
+    ],
+    image: "/work/rally-reserve.png",
+    imageAlt: "Rally Reserve court-booking platform",
+    imageNote: "Mockup – not a real tennis venue or location.",
+    wip: true,
     work: [],
   },
   {
@@ -135,8 +145,11 @@ export const sideProjects: Product[] = [
     role: "Side project",
     period: "2024",
     summary:
-      "A personal automation project that streamlines the repetitive parts of the job search, from sourcing roles to tailoring applications.",
-    tags: ["Python", "Automation", "Playwright"],
+      "A local job-search tool that scrapes boards, scores roles against my stack, and tailors my resume per application – with no LLM API or per-call cost.",
+    tags: ["Python", "Web Scraping", "python-docx", "pandas", "Automation"],
+    image: "/work/automating-job-search.png",
+    imageAlt: "Automating Job Search tool",
+    href: "https://github.com/timzw961/automated-job-search",
     work: [],
   },
 ];
