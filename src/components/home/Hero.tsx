@@ -8,7 +8,7 @@ export function Hero() {
     <section className={styles.hero}>
       <Container>
         <Reveal className={styles.heroInner}>
-          <p className={styles.heroEyebrow}>Senior Frontend Engineer</p>
+          <p className={styles.heroEyebrow}>Frontend Engineer</p>
 
           <h1 className={styles.heroTitle}>Timothy Wang</h1>
 
