@@ -20,7 +20,7 @@ const mono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Timothy Wang - Senior Frontend Engineer",
+    default: "Timothy Wang - Frontend Engineer",
     template: "%s · Timothy Wang",
   },
   description:
