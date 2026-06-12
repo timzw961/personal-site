@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(245, 246, 248, 0.8);
+  background: var(--header-bg);
   backdrop-filter: saturate(120%) blur(10px);
   -webkit-backdrop-filter: saturate(120%) blur(10px);
   border-bottom: 1px solid var(--border-strong);
@@ -36,6 +36,12 @@
   letter-spacing: -0.03em;
 }
 
+.right {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -67,6 +73,10 @@
     font-size: 16px;
   }
 
+  .right {
+    gap: 16px;
+  }
+
   .nav {
     gap: 16px;
   }
@@ -78,6 +88,10 @@
 }
 
 @media (max-width: 440px) {
+  .right {
+    gap: 13px;
+  }
+
   .nav {
     gap: 13px;
   }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./Header.module.css";
 import { Container } from "./Container";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   { label: "Work", href: "/#work" },
@@ -18,13 +19,20 @@ export function Header() {
             <span className={styles.brandName}>Timothy Wang</span>
           </Link>
 
-          <nav className={styles.nav} aria-label="Primary">
-            {navItems.map((item) => (
-              <Link key={item.href} href={item.href} className={styles.navLink}>
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <div className={styles.right}>
+            <nav className={styles.nav} aria-label="Primary">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={styles.navLink}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            <ThemeToggle />
+          </div>
         </div>
       </Container>
     </header>

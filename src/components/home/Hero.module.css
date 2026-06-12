@@ -91,14 +91,14 @@
 
 .btnPrimary {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--on-accent);
   border: 1px solid var(--accent);
 }
 
 .btnPrimary:hover {
   background: var(--accent-deep);
   border-color: var(--accent-deep);
-  color: #ffffff;
+  color: var(--on-accent);
 }
 
 .btnGhost {

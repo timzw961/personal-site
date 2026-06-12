@@ -183,7 +183,7 @@ a.workCard:hover .workCtaArrow {
   background-image: repeating-linear-gradient(
     135deg,
     transparent 0 12px,
-    rgba(12, 14, 18, 0.03) 12px 13px
+    var(--grid-line) 12px 13px
   );
 }
 
