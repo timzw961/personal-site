@@ -136,7 +136,7 @@ export const sideProjects: Product[] = [
     image: "/work/rally-reserve.png",
     imageAlt: "Rally Reserve court-booking platform",
     imageNote: "Mockup – not a real tennis venue or location.",
-    wip: true,
+    href: "https://rally-reserve-bice.vercel.app/prestons-tennis-centre",
     work: [],
   },
   {
@@ -145,7 +145,7 @@ export const sideProjects: Product[] = [
     role: "Side project",
     period: "2024",
     summary:
-      "A local job-search tool that scrapes boards, scores roles against my stack, and tailors my resume per application – with no LLM API or per-call cost.",
+      "A local job-search tool that scrapes boards and scores roles against my stack – with no LLM API or per-call cost.",
     tags: ["Python", "Web Scraping", "python-docx", "pandas", "Automation"],
     image: "/work/automating-job-search.png",
     imageAlt: "Automating Job Search tool",
