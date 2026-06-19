@@ -11,7 +11,6 @@
 .inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
   min-height: 64px;
 }
@@ -34,18 +33,15 @@
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.03em;
+  white-space: nowrap;
 }
 
-.right {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
+/* Push nav + toggle to the right as a group on desktop */
 .nav {
   display: flex;
   align-items: center;
   gap: 28px;
+  margin-left: auto;
 }
 
 .navLink {
@@ -66,18 +62,27 @@
 
 @media (max-width: 640px) {
   .inner {
+    flex-wrap: wrap;
+    gap: 0;
     min-height: 56px;
+    padding: 8px 0;
   }
 
   .brandName {
     font-size: 16px;
   }
 
-  .right {
-    gap: 16px;
+  /* Brand left, toggle right on the first row */
+  .brand {
+    margin-right: auto;
   }
 
+  /* Nav drops to its own full-width row */
   .nav {
+    order: 1;
+    flex-basis: 100%;
+    margin-left: 0;
+    margin-top: 10px;
     gap: 16px;
   }
 
@@ -88,10 +93,6 @@
 }
 
 @media (max-width: 440px) {
-  .right {
-    gap: 13px;
-  }
-
   .nav {
     gap: 13px;
   }

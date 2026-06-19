@@ -28,7 +28,7 @@
   --on-accent: #ffffff; /* text on accent fills - >=4.5:1 */
 
   /* Sticky header backdrop */
-  --header-bg: rgba(245, 246, 248, 0.8);
+  --header-bg: rgba(245, 246, 248, 0.94);
 
   /* Type stacks - fall back to system sans before next/font hydrates */
   --sans-fallback: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -78,7 +78,7 @@ html[data-theme="dark"] {
   --accent-faint: rgba(244, 116, 122, 0.1);
   --on-accent: #14161a; /* ~6.5:1 on --accent */
 
-  --header-bg: rgba(16, 18, 22, 0.8);
+  --header-bg: rgba(16, 18, 22, 0.94);
 }
 
 * {

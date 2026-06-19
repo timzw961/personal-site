@@ -19,20 +19,15 @@ export function Header() {
             <span className={styles.brandName}>Timothy Wang</span>
           </Link>
 
-          <div className={styles.right}>
-            <nav className={styles.nav} aria-label="Primary">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={styles.navLink}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-            <ThemeToggle />
-          </div>
+          <nav className={styles.nav} aria-label="Primary">
+            {navItems.map((item) => (
+              <Link key={item.href} href={item.href} className={styles.navLink}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <ThemeToggle />
         </div>
       </Container>
     </header>
