@@ -139,17 +139,4 @@ export const sideProjects: Product[] = [
     href: "https://rally-reserve-bice.vercel.app/prestons-tennis-centre",
     work: [],
   },
-  {
-    slug: "automating-job-search",
-    name: "Automating Job Search",
-    role: "Side project",
-    period: "2024",
-    summary:
-      "A local job-search tool that scrapes boards and scores roles against my stack – with no LLM API or per-call cost.",
-    tags: ["Python", "Web Scraping", "python-docx", "pandas", "Automation"],
-    image: "/work/automating-job-search.png",
-    imageAlt: "Automating Job Search tool",
-    href: "https://github.com/timzw961/automated-job-search",
-    work: [],
-  },
 ];
