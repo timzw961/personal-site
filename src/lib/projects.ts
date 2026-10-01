@@ -1,41 +1,37 @@
-export type WorkItem = {
+export type Highlight = {
   title: string;
   summary: string;
   bullets: string[];
 };
 
-export type Product = {
+export type Project = {
   slug: string;
   name: string;
   role: string;
-  period: string;
   summary: string;
   tags: string[];
-  /** Hero image path (e.g. "/work/qantas-hotels.jpg"). Falls back to a placeholder when unset. */
-  image?: string;
+  /** Hero image path (e.g. "/work/qantas-hotels.png"). */
+  image: string;
   imageAlt?: string;
   /** Small caption shown beneath the image (e.g. a mockup disclaimer). */
   imageNote?: string;
   /** External link (e.g. a GitHub repo). When set, the card opens this instead of a detail page. */
   href?: string;
-  /** Marks the project as in progress (shown as a label, no link). */
-  wip?: boolean;
-  work: WorkItem[];
+  highlights: Highlight[];
   note?: string;
 };
 
-export const products: Product[] = [
+export const workProjects: Project[] = [
   {
     slug: "qantas-hotels",
     name: "Qantas Hotels",
     role: "Senior Frontend Engineer",
-    period: "2025 – 2026",
     summary:
       "A high-traffic hotel booking platform. I shipped production features in React and TypeScript, and owned the testing, accessibility, and experimentation systems behind critical booking flows.",
     tags: ["React", "TypeScript", "Cypress", "Accessibility"],
     image: "/work/qantas-hotels.png",
     imageAlt: "Qantas Hotels hotel booking page",
-    work: [
+    highlights: [
       {
         title: "CI & E2E test speedup",
         summary:
@@ -83,13 +79,12 @@ export const products: Product[] = [
     slug: "qantas-pay",
     name: "Qantas Pay",
     role: "Frontend Engineer",
-    period: "2023 – 2025",
     summary:
       "The payments experience within Qantas Money. I built Next.js features across key customer payment flows and improved cross-platform analytics and reliability.",
     tags: ["Next.js", "TypeScript", "GA4", "Payments"],
     image: "/work/qantas-pay.png",
     imageAlt: "Qantas Pay landing page",
-    work: [
+    highlights: [
       {
         title: "Payment flow features",
         summary:
@@ -103,7 +98,7 @@ export const products: Product[] = [
       {
         title: "GA4 analytics instrumentation",
         summary:
-          "Implemented GA4 analytics instrumentation in partnership with Data & Analytics, iOS, Android, and Product teams.",
+          "Implemented GA4 analytics instrumentation in partnership with Data & Analytics, iOS, Android, and Project teams.",
         bullets: [
           "Instrumented GA4 events across QPay customer journeys.",
           "Partnered cross-platform to align tracking on web, iOS, and Android.",
@@ -114,12 +109,11 @@ export const products: Product[] = [
   },
 ];
 
-export const sideProjects: Product[] = [
+export const sideProjects: Project[] = [
   {
     slug: "rally-reserve",
     name: "Rally Reserve",
     role: "Side project",
-    period: "2024",
     summary:
       "Multi-tenant court-booking platform with per-venue timezones, loyalty rewards, recurring bookings, and concurrency-safe reservations – backed by 300+ unit tests and a Playwright E2E suite.",
     tags: [
@@ -137,6 +131,6 @@ export const sideProjects: Product[] = [
     imageAlt: "Rally Reserve court-booking platform",
     imageNote: "Mockup – not a real tennis venue or location.",
     href: "https://rally-reserve-bice.vercel.app/prestons-tennis-centre",
-    work: [],
+    highlights: [],
   },
 ];

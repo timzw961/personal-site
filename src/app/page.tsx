@@ -3,7 +3,7 @@ import { Section } from "@/components/home/Section";
 import { ProjectList } from "@/components/home/ProjectList";
 import { Recognition } from "@/components/home/Recognition";
 import { Contact } from "@/components/home/Contact";
-import { products, sideProjects } from "@/lib/projects";
+import { workProjects, sideProjects } from "@/lib/projects";
 
 export default function HomePage() {
   return (
@@ -11,7 +11,7 @@ export default function HomePage() {
       <Hero />
 
       <Section id="work" index="01" label="Work">
-        <ProjectList items={products} />
+        <ProjectList items={workProjects} />
       </Section>
 
       <Section id="projects" index="02" label="Projects">

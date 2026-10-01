@@ -4,27 +4,21 @@
   /* Surfaces - cool near-white, precision-tech */
   --bg: #f5f6f8;
   --bg-elev: #ffffff; /* white panels */
-  --bg-elev-hover: #ffffff;
-  --bg-inset: #eceef2; /* faint inset blocks */
 
   /* Ink ramp - every text token clears WCAG 2.1 AAA (>=7:1) on --bg */
   --fg-strong: #0c0e12; /* ~17:1  headings */
   --fg: #1b1e24; /* ~13:1  body */
   --muted: #4b515b; /* ~7.2:1 secondary text */
-  --muted-soft: #4b515b; /* kept AAA-safe; no sub-7:1 text token */
-  --muted-faint: #4b515b;
 
-  /* Hairlines, rules & structural grid (decorative, not text) */
+  /* Hairlines & rules (decorative, not text) */
   --border: rgba(12, 14, 18, 0.12);
   --border-strong: rgba(12, 14, 18, 0.24);
   --border-hover: rgba(12, 14, 18, 0.55);
-  --grid-line: rgba(12, 14, 18, 0.05);
 
   /* Sharp red - >=7:1 on --bg, AAA for text */
   --accent: #a4161a;
   --accent-soft: rgba(164, 22, 26, 0.5);
   --accent-deep: #7d0f0f; /* hover / pressed */
-  --accent-faint: rgba(164, 22, 26, 0.07);
   --on-accent: #ffffff; /* text on accent fills - >=4.5:1 */
 
   /* Sticky header backdrop */
@@ -38,15 +32,12 @@
   --mono: var(--font-mono), var(--mono-fallback);
 
   /* Rhythm */
-  --container-narrow: 720px;
   --container: 1080px;
-  --container-wide: 1240px;
   --section-pad: clamp(64px, 9vw, 120px);
   --gutter: clamp(20px, 4vw, 32px);
 
   /* Motion */
   --ease-out: cubic-bezier(0.2, 0.65, 0.25, 1);
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html[data-theme="dark"] {
@@ -55,27 +46,21 @@ html[data-theme="dark"] {
   /* Surfaces - deep cool greys */
   --bg: #101216;
   --bg-elev: #181b21;
-  --bg-elev-hover: #1c2027;
-  --bg-inset: #1e222a;
 
   /* Ink ramp - every text token clears WCAG 2.1 AA (>=4.5:1) on --bg and --bg-elev */
   --fg-strong: #f2f4f8; /* ~16:1  headings */
   --fg: #d7dbe2; /* ~12:1  body */
   --muted: #a6adb9; /* ~8:1  secondary text */
-  --muted-soft: #a6adb9;
-  --muted-faint: #a6adb9;
 
-  /* Hairlines, rules & structural grid (decorative, not text) */
+  /* Hairlines & rules (decorative, not text) */
   --border: rgba(242, 244, 248, 0.14);
   --border-strong: rgba(242, 244, 248, 0.28);
   --border-hover: rgba(242, 244, 248, 0.6);
-  --grid-line: rgba(242, 244, 248, 0.06);
 
   /* Lifted red - ~6.6:1 on --bg, AA for text at any size */
   --accent: #f4747a;
   --accent-soft: rgba(244, 116, 122, 0.5);
   --accent-deep: #ffa1a6; /* hover / pressed - lighter on dark */
-  --accent-faint: rgba(244, 116, 122, 0.1);
   --on-accent: #14161a; /* ~6.5:1 on --accent */
 
   --header-bg: rgba(16, 18, 22, 0.94);

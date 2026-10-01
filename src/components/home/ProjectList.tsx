@@ -1,77 +1,66 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import styles from "./ProjectList.module.css";
-import type { Product } from "@/lib/projects";
+import type { Project } from "@/lib/projects";
 
 function ctaLabel(href: string) {
   return href.includes("github.com") ? "View on GitHub" : "View project";
 }
 
-export function ProjectList({ items }: { items: Product[] }) {
+export function ProjectList({ items }: { items: Project[] }) {
   return (
-    <ol className={styles.workList}>
-      {items.map((product) => {
-        const hasDetail = product.work.length > 0;
+    <ol className={styles.projectList}>
+      {items.map((project) => {
+        const hasDetail = project.highlights.length > 0;
 
-        const footer = product.href ? (
-          <span className={styles.workCta}>
-            {ctaLabel(product.href)}
-            <span className={styles.workCtaArrow} aria-hidden="true">
+        const footer = project.href ? (
+          <span className={styles.projectCta}>
+            {ctaLabel(project.href)}
+            <span className={styles.projectCtaArrow} aria-hidden="true">
               →
             </span>
           </span>
         ) : hasDetail ? (
-          <span className={styles.workCta}>
+          <span className={styles.projectCta}>
             Read more
-            <span className={styles.workCtaArrow} aria-hidden="true">
+            <span className={styles.projectCtaArrow} aria-hidden="true">
               →
             </span>
           </span>
-        ) : product.wip ? (
-          <span className={styles.workStatus}>Work in progress</span>
         ) : null;
 
         const content = (
           <>
-            <div className={styles.workMeta}>
-              <h3 className={styles.workTitle}>{product.name}</h3>
+            <div className={styles.projectMeta}>
+              <h3 className={styles.projectTitle}>{project.name}</h3>
 
-              <p className={styles.workSummary}>{product.summary}</p>
+              <p className={styles.projectSummary}>{project.summary}</p>
 
-              <ul className={styles.workTags}>
-                {product.tags.map((t) => (
-                  <li key={t} className={styles.workTag}>
+              <ul className={styles.projectTags}>
+                {project.tags.map((t) => (
+                  <li key={t} className={styles.projectTag}>
                     {t}
                   </li>
                 ))}
               </ul>
 
               {footer ? (
-                <div className={styles.workFooter}>{footer}</div>
+                <div className={styles.projectFooter}>{footer}</div>
               ) : null}
             </div>
 
-            <figure className={styles.workThumb}>
-              <div className={styles.workThumbInner}>
-                {product.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    className={styles.workThumbImg}
-                    src={product.image}
-                    alt={product.imageAlt ?? product.name}
-                  />
-                ) : (
-                  <span
-                    className={styles.workThumbPlaceholder}
-                    aria-hidden="true"
-                  >
-                    Image
-                  </span>
-                )}
+            <figure className={styles.projectThumb}>
+              <div className={styles.projectThumbInner}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  className={styles.projectThumbImg}
+                  src={project.image}
+                  alt={project.imageAlt ?? project.name}
+                />
               </div>
-              {product.imageNote ? (
-                <figcaption className={styles.workThumbNote}>
-                  {product.imageNote}
+              {project.imageNote ? (
+                <figcaption className={styles.projectThumbNote}>
+                  {project.imageNote}
                 </figcaption>
               ) : null}
             </figure>
@@ -79,13 +68,13 @@ export function ProjectList({ items }: { items: Product[] }) {
         );
 
         let card: ReactNode;
-        if (product.href) {
+        if (project.href) {
           card = (
             <a
-              href={product.href}
+              href={project.href}
               target="_blank"
               rel="noreferrer"
-              className={styles.workCard}
+              className={styles.projectCard}
             >
               {content}
             </a>
@@ -93,18 +82,18 @@ export function ProjectList({ items }: { items: Product[] }) {
         } else if (hasDetail) {
           card = (
             <Link
-              href={`/projects/${product.slug}`}
-              className={styles.workCard}
+              href={`/work/${project.slug}`}
+              className={styles.projectCard}
             >
               {content}
             </Link>
           );
         } else {
-          card = <div className={styles.workCard}>{content}</div>;
+          card = <div className={styles.projectCard}>{content}</div>;
         }
 
         return (
-          <li key={product.slug} className={styles.workItem}>
+          <li key={project.slug} className={styles.projectItem}>
             {card}
           </li>
         );
